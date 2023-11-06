@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router'
 import LandingData from '../data/Landingdata'
 import backMuscle from  '../assets/back_muscle.png'
 import legMuscle from '../assets/leg_muscle.png'
+import { useDispatch } from 'react-redux'
+import { settype } from '../redux/programs/program'
 
 function MainPage() {
   const [obsData, setObsData] = useState(LandingData)
@@ -14,17 +16,7 @@ function MainPage() {
   const [currentdata, setcurrentdata] = useState([])
   const navigate = useNavigate()
   const [pageNumber, setpageNumber] = useState(1)
-
-
-
-  const increasePageNum = () => {
-    
-    if(pageNumber == 4) {
-      setpageNumber(1)
-    }else{
-      setpageNumber(pageNumber + 1)
-    }
-  }
+  const dispatch = useDispatch()
 
   const [programnum, setprogramnum] = useState(1)
   
@@ -51,6 +43,12 @@ function MainPage() {
     setprogramnum(prevProgramNum);
     setpageNumber(prevProgramNum);
   };
+
+  const customRoute = ({ id, type }) => {
+      dispatch( settype(type));
+      navigate(`/services/${id}`);
+  
+  }
 
 
 
@@ -306,7 +304,7 @@ function MainPage() {
                   <h5>time</h5>
                     <p>{currentdata.durationMonths} month</p>
                   </motion.div>
-                  <motion.button id='dif_button' variants={boxVariants} transition={{delay : 5.2, duration: .8, type: "spring",}} initial="hidden" animate="visible"> more <i className="fa-solid fa-right-long"></i> </motion.button>
+                  <motion.button onClick={() => customRoute({id : currentdata.id, type : "mainPageType"})}  id='dif_button' variants={boxVariants} transition={{delay : 5.2, duration: .8, type: "spring",}} initial="hidden" animate="visible"> more <i className="fa-solid fa-right-long"></i> </motion.button>
                 </motion.div> 
   
   

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Landing from './pages/LandingPage';
 import MainPage from './pages/MainPage';
-import Nav from './components/nav';
 import { AnimatePresence } from 'framer-motion';
 import Services from './pages/Services';
 import AboutPage from './pages/AboutPage';

@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    routeType : ""
+    routeType : "",
+    boughtprograms : []
 }
 
 const programSlice = createSlice({
@@ -10,9 +11,12 @@ const programSlice = createSlice({
     reducers : {
         settype : (state, action) => {
             state.routeType = action.payload
-        }
+        },
+        addItem : (state, action) => {
+            state.boughtprograms = [...state.boughtprograms, action.payload]
+        }   
     }
 })
 
 export default programSlice.reducer
-export const {settype} = programSlice.actions
+export const {settype, addItem} = programSlice.actions

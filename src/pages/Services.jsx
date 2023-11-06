@@ -14,8 +14,6 @@ import ham from '../assets/hams.png';
 import gluteus from '../assets/gluteus.png';
 import quad from '../assets/quad.png';
 import { useDispatch } from 'react-redux';
-
-// Import the settype action from your Redux slice
 import { settype } from '../redux/programs/program';
 
 function Services() {
@@ -25,9 +23,6 @@ function Services() {
   const [lowerBody, setlowerBody] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(carousel.current);
-  }, []);
 
   const customRoute = ({ id, type }) => {
     if (type === 'lowerBody') {
